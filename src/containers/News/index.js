@@ -1,13 +1,20 @@
+/*  ********** 参数传递 ************
+ *  1、路由跳转：传递参数
+ *  2、父子组件：props
+ *  3、通知
+ *  4、react-redux
+ *  ******************************* */
+
 import React, { Component } from 'react';
 
 import {
     View,
     Text,
-    FlatList
+    Button
 } from 'react-native';
 
 
-export default class NewsList extends Component{
+export default class NewsScreen extends Component{
 
     constructor(props){
         super(props);
@@ -16,13 +23,17 @@ export default class NewsList extends Component{
 
     render() {
         return (
-            <View style={{color:'#1234fa'}}>
-                <FlatList
-                    style={{backgroundColor:'brown'}}
-                    data={[{name: 'a'}, {name: 'b'},{name: 'c'}, {name: 'd'}]}
-                    renderItem={({item, i}) => <Text style={{textAlign:'center'}}>{item.name} + newslist</Text>}
-                >
-                </FlatList>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>Home Screen</Text>
+                <Button
+                    title="Go to Details"
+                    onPress={() => {
+                        this.props.navigation.navigate('NewsDetail', {
+                            itemId: '86',
+                            params: {uId:"123"},
+                        });
+                    }}
+                />
             </View>
         );
     }
