@@ -13,7 +13,6 @@ import {
     Button
 } from 'react-native';
 
-
 export default class NewsScreen extends Component{
 
     constructor(props){

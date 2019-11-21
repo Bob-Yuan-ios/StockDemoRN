@@ -13,10 +13,13 @@ export default class TradeScreen extends Component{
         super(props);
     }
 
+    _keyExtractor = (item, index) => index + "";
+
     render() {
         return (
             <View style={{color:'#1234fa'}}>
                 <FlatList
+                    keyExtractor={this._keyExtractor}
                     style={{backgroundColor:'green', height:'100%'}}
                     data={[{name: 'a'}, {name: 'b'},{name: 'c'}, {name: 'd'}]}
                     renderItem={({item, i}) => <Text style={{textAlign:'center'}}>{item.name} + tradeList</Text>}
@@ -25,4 +28,6 @@ export default class TradeScreen extends Component{
             </View>
         );
     }
+
+
 }

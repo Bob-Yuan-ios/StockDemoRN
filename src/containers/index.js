@@ -25,20 +25,20 @@ const NewsStack = createStackNavigator({
 const StockStack = createStackNavigator({
     StockList: StockScreen,
     StockDetail: StockDetail,
-},  {
+},{
     initialRouteName: 'StockList',
 });
 
 const TradeStack = createStackNavigator({
     TradeList: TradeScreen,
     TradeDetail: TradeDetail,
-},  {
+},{
     initialRouteName: 'TradeList',
 });
 
 const UserCenterStack = createStackNavigator({
     UserCenter: UserCenterScreen,
-},  {
+},{
     initialRouteName: 'UserCenter',
 });
 
@@ -50,8 +50,6 @@ NewsStack.navigationOptions = ({ navigation }) => {
     tabBarVisible = (navigation.state.index > 0) ? false : true;
 
     return ({
-        title: 'Welcome',
-        headerTintColor:'#1f1eff',
         tabBarLabel: '资讯',
         tabBarVisible
     });
@@ -64,7 +62,6 @@ StockStack.navigationOptions = ({ navigation }) => {
     tabBarVisible = (navigation.state.index > 0) ? false : true;
 
     return ({
-        headerTintColor:'#1f1eff',
         tabBarLabel: '行情',
         tabBarVisible
     });
@@ -78,8 +75,6 @@ TradeStack.navigationOptions = ({ navigation }) => {
     tabBarVisible = (navigation.state.index > 0) ? false : true;
 
     return ({
-        title: 'Welcome',
-        headerTintColor:'#1f1eff',
         tabBarLabel: '交易',
         tabBarVisible
     });
@@ -92,8 +87,6 @@ UserCenterStack.navigationOptions = ({ navigation }) => {
     tabBarVisible = (navigation.state.index > 0) ? false : true;
 
     return ({
-        title: 'Welcome',
-        headerTintColor:'#1f1eff',
         tabBarLabel: '个人中心',
         tabBarVisible
     });
