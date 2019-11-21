@@ -2,7 +2,9 @@
 // 账户资料相关信息
 // 资产信息
 const balanceInfo = {
-
+    balance: '',
+    profit: '',
+    frozen: '',
 }
 
 // kyc信息
@@ -12,8 +14,11 @@ const kycInfo = {
 
 
 // 账户信息
-const accInfo = {
-
+export const accInfo = {
+    accountId: 'a12345678',
+    nickName: 'Bob',
+    gender: '1',
+    favorUrl: '',
 }
 
 /////////////////////////////////////////////////////////

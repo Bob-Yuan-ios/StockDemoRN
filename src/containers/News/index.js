@@ -13,27 +13,65 @@ import {
     Button
 } from 'react-native';
 
-export default class NewsScreen extends Component{
+import { connect } from 'react-redux'
+import { updateBalanceInfo } from '../../actions/Account';
+
+import { accInfo } from '../../models/Account';
+
+class NewsScreen extends Component{
 
     constructor(props){
         super(props);
+
+        this.state = {
+            accInfo
+        };
     }
 
+    componentDidUpdate(props){
+        //this.preProps
+    }
+
+    UNSAFE_componentWillUpdate(props){
+        // this.props
+        alert(JSON.stringify(props.accInfo));
+    }
 
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Home Screen</Text>
                 <Button
-                    title="Go to Details"
+                    title="refresh"
                     onPress={() => {
-                        this.props.navigation.navigate('NewsDetail', {
-                            itemId: '86',
-                            params: {uId:"123"},
-                        });
+                        this.updateAccount();
                     }}
                 />
             </View>
         );
     }
+
+
+    updateAccount = () => {
+        this.props.update({
+            ...accInfo,
+            favorUrl: 'www.baidu.com'
+        });
+    }
 }
+
+const mapStateToProps = state => {
+    return {
+        accInfo: state.account,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        update: (info) => dispatch(updateBalanceInfo(info)),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(NewsScreen)
