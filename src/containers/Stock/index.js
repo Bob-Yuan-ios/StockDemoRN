@@ -29,6 +29,22 @@ class StockScreen extends Component{
         }, 1000);
     }
 
+    UNSAFE_componentWillUpdate(props){
+
+        if (this.state.refreshing){
+            this.setState({
+                refreshing: false
+            });
+            return;
+        }
+
+        if (this.state.isFooterLoading){
+            this.setState({
+                isFooterLoading: false
+            });
+        }
+    }
+
     _keyExtractor = (item, index) => index + "";
 
 
@@ -69,10 +85,9 @@ class StockScreen extends Component{
 
         console.log('dataArr.....' + dataArr.length);
         return (
-            <View style = {{backgroundColor:'#1234fa', height: '100%'}}>
+            <View style = {{height: '100%'}}>
                 <FlatList
                     keyExtractor = {this._keyExtractor}
-                    style = {{backgroundColor:'gray'}}
                     data = {dataArr}
                     renderItem = {this._renderItem}
                     refreshing = {state.refreshing}
@@ -99,13 +114,6 @@ class StockScreen extends Component{
         });
 
         this.props.loadStockList(pageNum);
-
-        setTimeout(() => {
-            this.setState({
-                refreshing: false,
-            })
-
-        }, 1500);
     }
 
     // 下拉加载更多
@@ -127,14 +135,6 @@ class StockScreen extends Component{
         });
 
         this.props.loadStockList(pageNum);
-
-        setTimeout(() => {
-
-            this.setState({
-                isFooterLoading: false,
-            })
-
-        }, 2000);
     }
 }
 

@@ -13,7 +13,8 @@ import {
     CONTENT_COLOR,
     TITLE_FONT_SIZE,
     CONTENT_FONT_SIZE,
-    SCREEN_MARGIN_SPACE
+    SCREEN_MARGIN_SPACE,
+    ITEM_MARGIN_SPACE
 } from '../../constant/CommonConfig';
 
 
@@ -28,23 +29,25 @@ export class StockFlatItem extends Component{
             >
                 <View style={styles.container}>
                     <View style={styles.leftContainer}>
-                        <Text stlye={styles.titleTextStyle}>
+                        <Text stlye={styles.symbolName}>
                             {props.name}
                         </Text>
-                        <Text style={styles.subTextStyle}>
+                        <Text style={styles.symbolCode}>
                             {props.code}
                         </Text>
                     </View>
 
-                    <Text stlye={styles.titleTextStyle}>
-                        {props.trade}
-                    </Text>
+                    <View style={styles.centerContainer}>
+                        <Text stlye={styles.curPrice}>
+                            {props.trade}
+                        </Text>
+                    </View>
 
                     <View style={styles.rightContainer}>
-                        <Text stlye={styles.titleTextStyle}>
+                        <Text stlye={styles.percentChange}>
                             {props.changepercent}
                         </Text>
-                        <Text style={styles.subTextStyle}>
+                        <Text style={styles.priceChange}>
                             {props.pricechange}
                         </Text>
                     </View>
@@ -66,30 +69,62 @@ const styles = StyleSheet.create({
         paddingLeft: SCREEN_MARGIN_SPACE,
         paddingRight: SCREEN_MARGIN_SPACE,
         marginBottom: 5,
-        backgroundColor: THEME_COLOR,
         borderColor: 'black',
         borderWidth: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        textAlign: 'center'
     },
 
     leftContainer: {
+        height: '100%',
         flexDirection: 'row',
-        width: '33.3%'
+        width: '33.3%',
+        alignItems: 'center',
+    },
+
+    centerContainer: {
+        height: '100%',
+        flexDirection: 'row',
+        width: '33.3%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     rightContainer:{
+        height: '100%',
         flexDirection: 'column',
-        width: '33.3%'
+        width: '33.3%',
+        alignItems: 'center'
     },
 
-    titleTextStyle: {
+    symbolName: {
         color: TITLE_COLOR,
         fontSize: TITLE_FONT_SIZE,
         height: 21,
+        backgroundColor: 'yellow'
     },
 
-    subTextStyle: {
+    symbolCode: {
+        color: CONTENT_COLOR,
+        fontSize: CONTENT_FONT_SIZE,
+        marginLeft: ITEM_MARGIN_SPACE,
+        height: 14,
+    },
+
+    curPrice: {
+        color: CONTENT_COLOR,
+        fontSize: CONTENT_FONT_SIZE,
+        height: 18,
+    },
+
+    priceChange: {
+        color: CONTENT_COLOR,
+        fontSize: CONTENT_FONT_SIZE,
+        height: 18,
+    },
+
+    percentChange: {
         color: CONTENT_COLOR,
         fontSize: CONTENT_FONT_SIZE,
         height: 18,
