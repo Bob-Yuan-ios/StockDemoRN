@@ -12,7 +12,7 @@ const  defaultState = {
 export default account = (state = defaultState, action) => {
     switch (action.type){
         case UPDATE_BALANCE_INFO:{
-            console.log('reducer ...:' + JSON.stringify(action.info));
+            // console.log('account ...:' + JSON.stringify(action.info));
             return {
                 ...state,
                 accInfo: action.info || {}

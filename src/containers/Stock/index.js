@@ -8,7 +8,10 @@ import {
 import { StockFlatItem } from '../../component/stockflatItem';
 import { BaseFlatListFooter } from '../../component/common/BaseFlatListFooter';
 
-export default class StockScreen extends Component{
+import { connect } from 'react-redux';
+import { getStockList } from '../../interfaces/network/ICStock';
+
+class StockScreen extends Component{
 
     constructor(props){
         super(props);
@@ -17,33 +20,13 @@ export default class StockScreen extends Component{
             refreshing: false,
             isFooterLoading: false,
             reachLast: false,
-
-            dataArr: [
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-            ]
+            pageNum: 1,
+            dataArr: []
         };
 
+        setTimeout(()=>{
+            this._onRefreshData();
+        }, 1000);
     }
 
     _keyExtractor = (item, index) => index + "";
@@ -80,12 +63,15 @@ export default class StockScreen extends Component{
 
     render() {
         const state = this.state;
+        const dataArr = this.props.dataArr || this.state.dataArr;
+
+        console.log('dataArr.....' + dataArr.length);
         return (
             <View style = {{backgroundColor:'#1234fa', height: '100%'}}>
                 <FlatList
                     keyExtractor = {this._keyExtractor}
                     style = {{backgroundColor:'gray'}}
-                    data = {state.dataArr}
+                    data = {dataArr}
                     renderItem = {this._renderItem}
                     refreshing = {state.refreshing}
                     onRefresh = {this._onRefreshData}
@@ -103,35 +89,17 @@ export default class StockScreen extends Component{
     _onRefreshData = () => {
         console.log('触发顶部刷新...');
 
+        let pageNum = 1;
         this.setState({
             refreshing: true,
             reachLast: false,
+            pageNum,
         });
 
+        this.props.loadStockList(pageNum);
 
         setTimeout(() => {
-            let dataNewArray = [
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-            ]
             this.setState({
-                dataArr: dataNewArray,
                 refreshing: false,
             })
 
@@ -148,38 +116,40 @@ export default class StockScreen extends Component{
 
         console.log('加载更多数据...');
 
+        let pageNum = this.state.pageNum;
+        pageNum = pageNum + 1;
+
         this.setState({
             isFooterLoading: true,
+            pageNum
         });
 
+        this.props.loadStockList(pageNum);
+
         setTimeout(() => {
-            let dataNewArray = [
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-                {titleCon: 'asf', subCon: '28.19'},
-                {titleCon: 'asf', subCon: '3.84'},
-                {titleCon: 'asf', subCon: '30.49'},
-            ]
 
             this.setState({
-                dataArr: dataNewArray,
                 isFooterLoading: false,
-                reachLast: true
             })
 
         }, 2000);
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        dataArr: state.stockList.symbol
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loadStockList : (pageNum) => dispatch(dispatch(getStockList(pageNum))),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(StockScreen)
+

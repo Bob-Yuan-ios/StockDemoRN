@@ -4,7 +4,6 @@ import {
     StyleSheet,
     View,
     Text,
-    Image,
     TouchableHighlight
 } from  'react-native';
 
@@ -17,6 +16,8 @@ import {
     SCREEN_MARGIN_SPACE
 } from '../../constant/CommonConfig';
 
+
+
 export class StockFlatItem extends Component{
 
     render(){
@@ -26,14 +27,27 @@ export class StockFlatItem extends Component{
                 onPress={this._onPressItem}
             >
                 <View style={styles.container}>
-                    <Image style={styles.imgStyle}>
-                    </Image>
+                    <View style={styles.leftContainer}>
+                        <Text stlye={styles.titleTextStyle}>
+                            {props.name}
+                        </Text>
+                        <Text style={styles.subTextStyle}>
+                            {props.code}
+                        </Text>
+                    </View>
+
                     <Text stlye={styles.titleTextStyle}>
-                        {props.titleCon}
+                        {props.trade}
                     </Text>
-                    <Text style={styles.subTextStyle}>
-                        {props.subCon}
-                    </Text>
+
+                    <View style={styles.rightContainer}>
+                        <Text stlye={styles.titleTextStyle}>
+                            {props.changepercent}
+                        </Text>
+                        <Text style={styles.subTextStyle}>
+                            {props.pricechange}
+                        </Text>
+                    </View>
                 </View>
             </TouchableHighlight>
         );
@@ -55,6 +69,18 @@ const styles = StyleSheet.create({
         backgroundColor: THEME_COLOR,
         borderColor: 'black',
         borderWidth: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+
+    leftContainer: {
+        flexDirection: 'row',
+        width: '33.3%'
+    },
+
+    rightContainer:{
+        flexDirection: 'column',
+        width: '33.3%'
     },
 
     titleTextStyle: {
@@ -67,11 +93,6 @@ const styles = StyleSheet.create({
         color: CONTENT_COLOR,
         fontSize: CONTENT_FONT_SIZE,
         height: 18,
-    },
-
-    imgStyle: {
-        backgroundColor: '#1f1fea',
     }
-
 });
 

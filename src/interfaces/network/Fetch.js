@@ -1,9 +1,14 @@
 
+
+const APPKEY = 'bab18498ce6a97b81a5cdaabbf55bb12';
+
 export const getMethod = async function post(url) {
 
     try {
 
-        let response = await fetch(url);
+        const fetchUrl = url + '&key=' + APPKEY;
+
+        let response = await fetch(fetchUrl);
         let resJson = await response.json();
 
         /*  *********************

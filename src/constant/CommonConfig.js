@@ -7,7 +7,6 @@ export const TITLE_COLOR = '#fe1bce';
 export const CONTENT_COLOR = '#abf2ce';
 
 
-
 // 字号设置
 export const TITLE_FONT_SIZE = 16;
 

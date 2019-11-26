@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    ActivityIndicator,
-    StyleSheet
+    StyleSheet,
+    ActivityIndicator
 } from 'react-native';
 
 
