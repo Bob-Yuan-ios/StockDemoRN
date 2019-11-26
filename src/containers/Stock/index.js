@@ -8,7 +8,6 @@ import {
 import { StockFlatItem } from '../../component/stockflatItem';
 import { BaseFlatListFooter } from '../../component/common/BaseFlatListFooter';
 
-
 export default class StockScreen extends Component{
 
     constructor(props){
@@ -38,6 +37,10 @@ export default class StockScreen extends Component{
                 {titleCon: 'asf', subCon: '28.19'},
                 {titleCon: 'asf', subCon: '3.84'},
                 {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
             ]
         };
 
@@ -46,8 +49,8 @@ export default class StockScreen extends Component{
     _keyExtractor = (item, index) => index + "";
 
 
-    _onPressItem = () => {
-        alert('This is a button!');
+    _onPressItem = (props) => {
+        console.log('catch click item info:' + JSON.stringify(props));
     };
 
     // prop传递参数
@@ -55,7 +58,6 @@ export default class StockScreen extends Component{
         return (
             <StockFlatItem
                 {...item}
-                id={item.id}
                 onPressItem={this._onPressItem}
             />
         )
@@ -143,6 +145,8 @@ export default class StockScreen extends Component{
 
         //如果数据加载完成，则直接结束；具体根据返回数据的最后一条标示判断
         if (true === this.state.reachLast) return;
+
+        console.log('加载更多数据...');
 
         this.setState({
             isFooterLoading: true,

@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 
 import {
-    View,
-    Text
+    Text,
+    TouchableHighlight
 } from 'react-native';
 
 
 export default class StockDetail extends Component{
-
     render() {
         return (
-            <View>
+            <TouchableHighlight
+                onPress={this._onPressItem}
+            >
                 <Text>
                     StockDetail
                 </Text>
-            </View>
+            </TouchableHighlight>
         );
     }
 }

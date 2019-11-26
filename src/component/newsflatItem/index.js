@@ -8,32 +8,23 @@ import {
 } from  'react-native';
 
 import {
-    THEME_COLOR
+    THEME_COLOR,
+    SCREEN_MARGIN_SPACE
 } from '../../constant/CommonConfig';
 
 export class NewsFlatItem extends Component{
 
-    constructor(props){
-        super(props);
-
-        this.state = {
-            titleCon: '主标题',
-            subCon: '副标题',
-            imgUrl: '',
-        };
-    }
-
     render(){
-        const state = this.state;
+        const props = this.props;
         return (
-            <View style={{backgroundColor: THEME_COLOR}}>
+            <View style={styles.container}>
                 <Image style={styles.imgStyle}>
                 </Image>
                 <Text stlye={styles.titleTextStyle}>
-                    {state.titleCon}
+                    {props.titleCon}
                 </Text>
                 <Text style={styles.subTextStyle}>
-                    {state.subCon}
+                    {props.subCon}
                 </Text>
             </View>
         );
@@ -44,9 +35,13 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        marginLeft: 15,
-        marginRight: 15,
-        backgroundColor: 'yellow',
+        marginTop: 10,
+        paddingLeft: SCREEN_MARGIN_SPACE,
+        paddingRight: SCREEN_MARGIN_SPACE,
+        marginBottom: 5,
+        backgroundColor: THEME_COLOR,
+        borderColor: 'black',
+        borderWidth: 1,
     },
 
 

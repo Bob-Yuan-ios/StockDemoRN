@@ -5,6 +5,7 @@ import {
     View,
     Text,
     Image,
+    TouchableHighlight
 } from  'react-native';
 
 import {
@@ -18,38 +19,29 @@ import {
 
 export class StockFlatItem extends Component{
 
-    constructor(props){
-        super(props);
-
-
-        this.state = {
-
-            titleCon: props.titleCon || '主标题-Stock',
-            subCon: props.subCon || '副标题-Stock',
-            imgUrl: '',
-        };
-    }
-
-    _onPress = () => {
-        this.props.onPressItem(this.props.id);
-    };
-
-
     render(){
-        const state = this.state;
+        const props = this.props;
         return (
-            <View style={styles.container}>
-                <Image style={styles.imgStyle}>
-                </Image>
-                <Text stlye={styles.titleTextStyle}>
-                    {state.titleCon}
-                </Text>
-                <Text style={styles.subTextStyle}>
-                    {state.subCon}
-                </Text>
-            </View>
+            <TouchableHighlight
+                onPress={this._onPressItem}
+            >
+                <View style={styles.container}>
+                    <Image style={styles.imgStyle}>
+                    </Image>
+                    <Text stlye={styles.titleTextStyle}>
+                        {props.titleCon}
+                    </Text>
+                    <Text style={styles.subTextStyle}>
+                        {props.subCon}
+                    </Text>
+                </View>
+            </TouchableHighlight>
         );
     }
+
+    _onPressItem = () => {
+        this.props.onPressItem(this.props);
+    };
 }
 
 const styles = StyleSheet.create({
