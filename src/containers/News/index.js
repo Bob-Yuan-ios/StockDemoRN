@@ -9,14 +9,13 @@ import React, { Component } from 'react';
 
 import {
     View,
-    Text,
     Button
 } from 'react-native';
 
 import { connect } from 'react-redux'
-import { updateBalanceInfo } from '../../actions/Account';
-
 import { accInfo } from '../../models/Account';
+import { getMovies } from '../../interfaces/network/ICAccount';
+
 
 class NewsScreen extends Component{
 
@@ -30,11 +29,12 @@ class NewsScreen extends Component{
 
     componentDidUpdate(props){
         //this.preProps
+        console.log('componentDidUpdate...' + JSON.stringify(props.accInfo));
     }
 
     UNSAFE_componentWillUpdate(props){
         // this.props
-        alert(JSON.stringify(props.accInfo));
+        console.log('UNSAFE_componentWillUpdate...' + JSON.stringify(props.accInfo));
     }
 
     render() {
@@ -52,10 +52,11 @@ class NewsScreen extends Component{
 
 
     updateAccount = () => {
-        this.props.update({
-            ...accInfo,
-            favorUrl: 'www.baidu.com'
-        });
+        // this.props.update({
+        //     ...accInfo,
+        //     favorUrl: 'www.baidu.com'
+        // });
+        this.props.update();
     }
 }
 
@@ -67,8 +68,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        update: (info) => dispatch(updateBalanceInfo(info)),
+        // update: (info) => dispatch(updateBalanceInfo(info)),
+        update: () => dispatch(dispatch(getMovies())), //中间件，执行对store进行dispatch封装
     }
+
 }
 
 export default connect(

@@ -30,6 +30,11 @@ export class StockFlatItem extends Component{
         };
     }
 
+    _onPress = () => {
+        this.props.onPressItem(this.props.id);
+    };
+
+
     render(){
         const state = this.state;
         return (

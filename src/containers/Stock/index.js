@@ -8,19 +8,36 @@ import {
 import { StockFlatItem } from '../../component/stockflatItem';
 import { BaseFlatListFooter } from '../../component/common/BaseFlatListFooter';
 
+
 export default class StockScreen extends Component{
 
     constructor(props){
         super(props);
 
         this.state = {
-            opacity: 0,
             refreshing: false,
             isFooterLoading: false,
+            reachLast: false,
+
             dataArr: [
-                {titleCon: '万科A(000001)', subCon: '23.12'},
-                {titleCon: '京东方(000002)', subCon: '3.91'},
-                {titleCon: '中心通讯(000003)', subCon: '32.16'}
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
             ]
         };
 
@@ -29,8 +46,8 @@ export default class StockScreen extends Component{
     _keyExtractor = (item, index) => index + "";
 
 
-    _onPressItem = (id: string) => {
-        alert('This is a button!' + id);
+    _onPressItem = () => {
+        alert('This is a button!');
     };
 
     // prop传递参数
@@ -44,18 +61,35 @@ export default class StockScreen extends Component{
         )
     }
 
+
+    _footerComponent = () => {
+
+        const props = {
+            isFooterLoading : this.state.isFooterLoading,
+            reachLast : this.state.reachLast,
+        };
+
+        return (
+            <BaseFlatListFooter
+                {...props}
+            />
+        )
+    }
+
     render() {
         const state = this.state;
         return (
-            <View style={{backgroundColor:'#1234fa'}}>
+            <View style = {{backgroundColor:'#1234fa', height: '100%'}}>
                 <FlatList
-                    keyExtractor={this._keyExtractor}
-                    style = {{backgroundColor:'gray', height:'100%'}}
+                    keyExtractor = {this._keyExtractor}
+                    style = {{backgroundColor:'gray'}}
                     data = {state.dataArr}
                     renderItem = {this._renderItem}
-                    onScroll = {(e)=>{this.onScroll(e)}}
                     refreshing = {state.refreshing}
-                    onRefresh = {this.loadData}
+                    onRefresh = {this._onRefreshData}
+                    onEndReached = {this._onEndReached}
+                    onEndReachedThreshold = {0.01}
+                    ListFooterComponent = {this._footerComponent}
                 >
                 </FlatList>
             </View>
@@ -63,21 +97,36 @@ export default class StockScreen extends Component{
     }
 
 
+    // 上拉刷新
+    _onRefreshData = () => {
+        console.log('触发顶部刷新...');
 
-    loadData = () => {
         this.setState({
-            refreshing: true
+            refreshing: true,
+            reachLast: false,
         });
 
 
         setTimeout(() => {
             let dataNewArray = [
-                {titleCon: '万科A(000001)', subCon: '23.12'},
-                {titleCon: '京东方(000002)', subCon: '3.91'},
-                {titleCon: '中心通讯(000003)', subCon: '32.16'},
-                {titleCon: '万科A(000004)', subCon: '23.12'},
-                {titleCon: '京东方(000005)', subCon: '3.91'},
-                {titleCon: '中心通讯(000006)', subCon: '32.16'}
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
             ]
             this.setState({
                 dataArr: dataNewArray,
@@ -87,52 +136,46 @@ export default class StockScreen extends Component{
         }, 1500);
     }
 
-    _onEndReached(){
+    // 下拉加载更多
+    _onEndReached = () => {
+
+        console.log('触发尾部刷新...');
+
+        //如果数据加载完成，则直接结束；具体根据返回数据的最后一条标示判断
+        if (true === this.state.reachLast) return;
+
         this.setState({
-            isFooterLoading: true
+            isFooterLoading: true,
         });
 
         setTimeout(() => {
             let dataNewArray = [
-                {titleCon: '万科A(000001)', subCon: '23.12'},
-                {titleCon: '京东方(000002)', subCon: '3.91'},
-                {titleCon: '中心通讯(000003)', subCon: '32.16'},
-                {titleCon: '万科A(000004)', subCon: '23.12'},
-                {titleCon: '京东方(000005)', subCon: '3.91'},
-                {titleCon: '中心通讯(000006)', subCon: '32.16'},
-                {titleCon: '万科A(000007)', subCon: '23.12'},
-                {titleCon: '京东方(000008)', subCon: '3.91'},
-                {titleCon: '中心通讯(000009)', subCon: '32.16'}
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
+                {titleCon: 'asf', subCon: '28.19'},
+                {titleCon: 'asf', subCon: '3.84'},
+                {titleCon: 'asf', subCon: '30.49'},
             ]
+
             this.setState({
                 dataArr: dataNewArray,
-                isFooterLoading: false
+                isFooterLoading: false,
+                reachLast: true
             })
+
         }, 2000);
     }
-
-
-
-    onScroll = (e) => {
-        let offsetY = e.nativeEvent.contentOffset.y;
-        if(offsetY < 10){
-            this.setState({
-                opacity: 0
-            })
-        }else if(offsetY <= 70 && offsetY >= 10){
-            this.setState({
-                opacity: offsetY/100
-            })
-        }else{
-            this.setState({
-                opacity: 1
-            })
-        }
-    }
 }
-
-
-// ListFooterComponent={<BaseFlatListFooter {...state}/>}
-// onEndReached={()=>{
-//     this._onEndReached();
-// }}

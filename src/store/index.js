@@ -1,12 +1,13 @@
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import rootReducer from '../reducers/index';
 
-// import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 
 export default function configureStore(initState) {
     const store = createStore(
         rootReducer,
-        initState
+        initState,
+        applyMiddleware(thunk)
     );
 
     global.AppReduxState = store;

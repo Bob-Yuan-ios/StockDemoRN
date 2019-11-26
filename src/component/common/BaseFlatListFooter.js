@@ -13,20 +13,19 @@ export class BaseFlatListFooter extends Component{
     constructor(props){
         super(props);
 
-        this.state = {
-            isFooterLoading: props.isFooterLoading || false
-        }
     }
 
-
     render(){
-        const  isFooterLoading = this.state.isFooterLoading;
+        const  isFooterLoading = this.props.isFooterLoading;
+        const  reachLast = this.props.reachLast;
+
+        const tipTxt = reachLast ? '已经全部加载' : '加载更多...';
         return (
-            <View style={styles.container} >
+            <View>
                 <ActivityIndicator
                     animating={isFooterLoading}
                 />
-                <Text style={styles.tipTextStyle}>加载更多...</Text>
+                <Text style={styles.tipTextStyle}>{tipTxt}</Text>
             </View>
         );
     }
@@ -34,14 +33,10 @@ export class BaseFlatListFooter extends Component{
 
 
 const styles = StyleSheet.create({
-    container:{
-        backgroundColor: '#f3ab1e',
-    },
 
     tipTextStyle:{
         textAlign: 'center',
         fontSize: 18,
-        color: 'red'
     }
 
 })
