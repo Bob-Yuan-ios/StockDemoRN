@@ -65,6 +65,8 @@ class StockScreen extends Component{
         const state = this.state;
         const dataArr = this.props.dataArr || this.state.dataArr;
 
+        const show = dataArr.length;
+
         console.log('dataArr.....' + dataArr.length);
         return (
             <View style = {{backgroundColor:'#1234fa', height: '100%'}}>
@@ -77,7 +79,7 @@ class StockScreen extends Component{
                     onRefresh = {this._onRefreshData}
                     onEndReached = {this._onEndReached}
                     onEndReachedThreshold = {0.01}
-                    ListFooterComponent = {this._footerComponent}
+                    ListFooterComponent = {show ? this._footerComponent : <View/>}
                 >
                 </FlatList>
             </View>
