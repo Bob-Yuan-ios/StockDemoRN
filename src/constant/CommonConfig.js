@@ -1,9 +1,11 @@
 
-// 颜色配置
+// 颜色配置 主题色
 export const THEME_COLOR = '#12d4fe';
 
+// 颜色配置 主标题
 export const TITLE_COLOR = '#fe1bce';
 
+// 颜色配置 副标题
 export const CONTENT_COLOR = '#fa1bce';
 
 
