@@ -2,8 +2,6 @@ import { getMethod } from './Fetch';
 
 import {updateStockList} from '../../actions/Stock';
 
-import configureStore from '../../store/index'
-
 const STOCK_LIST_URL = 'http://web.juhe.cn:8080/finance/stock/szall?';
 
 export const getStockList = (pageNum: string) => dispatch => async function stockList() {
@@ -18,15 +16,9 @@ export const getStockList = (pageNum: string) => dispatch => async function stoc
     if (1 === pageNum){
         symbol = resJson;
     }else {
+        //获取当前store快照
         let oStockList = global.AppReduxState.getState().stockList.symbol;
-
-        if ((oStockList instanceof Array)){
-            console.log('....ffffff');
-            symbol = oStockList.concat(resJson);
-        } else {
-            symbol = resJson;
-            console.log('oStockList...' + JSON.stringify(oStockList));
-        }
+        symbol = (oStockList instanceof Array) ?  oStockList.concat(resJson) : resJson;
     }
 
     return dispatch(dispatch(updateStockList(symbol)));
