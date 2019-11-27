@@ -11,7 +11,7 @@ import {
 
 import {
     getNewsList,
-    NEWS_LIST_TYPE_CAIJING
+    NEWS_LIST_TYPE_CAI_JING
 } from '../../interfaces/network/ICNews';
 
 export default class NewsScreen extends Component{
@@ -73,7 +73,7 @@ export default class NewsScreen extends Component{
             refreshing: true
         });
 
-        let res = await getNewsList(NEWS_LIST_TYPE_CAIJING);
+        let res = await getNewsList(NEWS_LIST_TYPE_CAI_JING);
 
         let model = {};
 

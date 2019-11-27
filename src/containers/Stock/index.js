@@ -31,6 +31,7 @@ class StockScreen extends Component{
 
     UNSAFE_componentWillUpdate(props){
 
+        //因为状态更新，导致多触发刷新
         if (this.state.refreshing){
             this.setState({
                 refreshing: false
