@@ -33,6 +33,11 @@ export default class NewsScreen extends Component{
 
     _onPressItem = (props) => {
         console.log('catch click NewsFlatItem info:' + JSON.stringify(props));
+        this.props.navigation.navigate('NewsDetail',
+            {
+                url: props.url,
+                title: props.title
+            });
     };
 
     // prop传递参数

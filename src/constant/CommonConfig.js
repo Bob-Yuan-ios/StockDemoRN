@@ -1,4 +1,10 @@
 
+import{
+    Dimensions
+}from 'react-native';
+
+export const SCREEN_WIDTH = Dimensions.get('window').width;
+
 // 颜色配置 主题色
 export const THEME_COLOR = '#12d4fe';
 

@@ -63,15 +63,12 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        marginTop: 10,
-        paddingLeft: SCREEN_MARGIN_SPACE,
-        paddingRight: SCREEN_MARGIN_SPACE,
-        marginBottom: 5,
-        borderColor: 'black',
-        borderWidth: 1,
         flexDirection: 'row',
+
+        textAlign: 'center',
         justifyContent: 'space-between',
-        textAlign: 'center'
+
+        margin: SCREEN_MARGIN_SPACE,
     },
 
     leftContainer: {

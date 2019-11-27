@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 
 import {
-    View,
-    Text,
     Button
 } from 'react-native';
 
+import {
+    WebView
+} from 'react-native-webview';
 
 export default class NewsDetail extends Component{
 
     static navigationOptions = ({ navigation, navigationOptions }) => {
+
+        const title = navigation.getParam('title', '新闻详情');
         return {
-            title: navigation.getParam('itemId', 'UserInfo'),
+            title: title,
             headerStyle: {
                 backgroundColor: navigationOptions.headerTintColor,
             },
             headerRight: () => (
                 <Button
-                    onPress={() => alert('This is a button!')}
+                    onPress={() => alert(title)}
                     title="Detail"
                     color="#1f1e2d"
                 />
@@ -26,22 +29,14 @@ export default class NewsDetail extends Component{
     };
 
     render() {
+        const {params} = this.props.navigation.state;
+        console.log('detail...' + JSON.stringify(params));
 
-        const { navigation } = this.props;
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-               <Text>
-                   currentUser: {JSON.stringify(navigation.getParam('params', '001'))}
-               </Text>
-                <Button
-                    title="Go to Home"
-                    onPress={() => this.props.navigation.navigate('NewsList')}
-                />
-                <Button
-                    title="Go back"
-                    onPress={() => this.props.navigation.goBack()}
-                />
-            </View>
+            <WebView
+                source={{uri: params.url}}
+                style={{marginTop: 20}}
+            />
         );
     }
 }

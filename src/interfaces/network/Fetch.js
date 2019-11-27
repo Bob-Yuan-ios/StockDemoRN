@@ -1,7 +1,7 @@
 
-const STOCK_APP_KEY = 'sssss';
+const STOCK_APP_KEY = 'bab18498ce6a97b81a5cdaabbf55bb12';
 
-const NEWS_APP_KEY = 'fffff';
+const NEWS_APP_KEY = 'dae12e801c2d9e563930b78a3ce78546';
 
 const TIMEOUT = 1500;
 

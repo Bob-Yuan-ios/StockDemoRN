@@ -14,7 +14,8 @@ import {
     TITLE_FONT_SIZE,
     CONTENT_FONT_SIZE,
     SCREEN_MARGIN_SPACE,
-    ITEM_MARGIN_SPACE
+    ITEM_MARGIN_SPACE,
+    SCREEN_WIDTH
 } from '../../constant/CommonConfig';
 
 // import PropTypes from 'prop-types';
@@ -23,21 +24,29 @@ export class NewsFlatItem extends Component{
 
     render(){
         const props = this.props;
+
         return (
             <TouchableHighlight
                 onPress={this._onPressItem}
             >
                 <View style={styles.container}>
-                    <Image
-                        style={styles.thumbImgStyle}
-                        source={{uri: props.thumbnail_pic_s}}
-                    />
-                    <Text stlye={styles.titleStyle}>
-                        {props.title}
-                    </Text>
-                    <Text style={styles.conStyle}>
-                        {props.author_name} + {props.date}
-                    </Text>
+                    <View style={styles.imgContainer}>
+                        <Image
+                            style={styles.thumbImgStyle}
+                            source={{uri: props.thumbnail_pic_s}}
+                        />
+                    </View>
+
+
+                    <View style={styles.txtContainer}>
+                        <Text stlye={styles.titleStyle}>
+                            {props.title}
+                        </Text>
+                        <Text style={styles.conStyle}>
+                            {props.author_name}  {props.date}
+                        </Text>
+                    </View>
+
                 </View>
             </TouchableHighlight>
 
@@ -53,34 +62,38 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        marginTop: 10,
-        paddingLeft: SCREEN_MARGIN_SPACE,
-        paddingRight: SCREEN_MARGIN_SPACE,
-        marginBottom: 5,
-        borderColor: 'black',
-        borderWidth: 1,
+        padding: SCREEN_MARGIN_SPACE,
         flexDirection: 'row',
+        justifyContent: 'space-between',
         textAlign: 'center'
     },
 
+
+    imgContainer: {
+        height: '100%',
+        justifyContent: 'center',
+    },
 
     thumbImgStyle: {
         width: 120,
         height: 40,
     },
 
+    txtContainer:{
+        width:  SCREEN_WIDTH - 120 - SCREEN_MARGIN_SPACE * 2,
+        padding: ITEM_MARGIN_SPACE,
+    },
+
     titleStyle: {
         color: TITLE_COLOR,
         fontSize: TITLE_FONT_SIZE,
-        height: 21,
-        backgroundColor: 'yellow'
+        margin: ITEM_MARGIN_SPACE
     },
 
     conStyle: {
         color: CONTENT_COLOR,
         fontSize: CONTENT_FONT_SIZE,
-        marginLeft: ITEM_MARGIN_SPACE,
-        height: 14,
+        margin: ITEM_MARGIN_SPACE
     },
 
 });
