@@ -12,7 +12,6 @@ import {
     Button
 } from 'react-native';
 
-import { accInfo } from '../../models/Account';
 import { getMovies } from '../../interfaces/network/ICAccount';
 
 export default class NewsScreen extends Component{
@@ -21,7 +20,7 @@ export default class NewsScreen extends Component{
         super(props);
 
         this.state = {
-            accInfo
+            accInfo: {}
         };
     }
 
@@ -46,11 +45,25 @@ export default class NewsScreen extends Component{
         );
     }
 
+    // 通过箭头函数，绑定this
+    // 可实现UI上的加载刷新
+    updateAccount = async () => {
 
+        this.setState({
+            refresh: true
+        });
 
-    updateAccount = async function getMovies1() {
         let res = await getMovies();
-        console.log('.... update account' + JSON.stringify(res));
+
+        let model = {};
+        if (0 === res.status) model = res.object;
+
+        this.setState({
+            refresh: false,
+            accInfo: model
+        });
+
+        console.log('.... update account:' + JSON.stringify(res));
     }
 }
 

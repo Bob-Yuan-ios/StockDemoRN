@@ -3,11 +3,29 @@
 const APPKEY = 'bab18498ce6a97b81a5cdaabbf55bb12';
 const TIMEOUT = 1500;
 
+
+/*    ************************  直接数据请求 ****************************
+ *    1、数据不需要复用
+ *    2、数据处理逻辑简单
+ *    3、View数据来源单一　
+ *    4、主动获取数据更新
+ *    **************************************************************** */
 export const get = async function getF(url: string) {
     return _fetch(fetchPromise('GET', url), TIMEOUT).then((resJson)=>{
-        return resJson;
+        console.log('success:' + JSON.stringify(resJson));
+        return {
+            status: 0,
+            object: resJson
+        };
     }).catch((e)=>{
-        console.error('error:' + JSON.stringify(e));
+        // 可以根据异常定义对应的逻辑
+        console.log('error information:' + JSON.stringify(e));
+        return {
+            status: -1,
+            object: {
+                msg: '请求超时'
+            }
+        }
     });
 }
 
@@ -19,6 +37,13 @@ export const post = async function postF(url: string, body: object) {
     });
 }
 
+
+/*    *******************  使用Redux进行数据请求 ***********************
+ *    1、数据需要复用
+ *    2、数据处理逻辑复杂
+ *    3、View数据来源多个　
+ *    4、被动数据更新
+ *    **************************************************************** */
 export const getWithRedux = async function getRF(url: string) {
 
     const fetchUrl = url + '&key=' + APPKEY;
@@ -55,6 +80,8 @@ export const postWithRedux = async function postRF(url: string, body: object) {
     // }
 }
 
+
+// 对fetch做超时封装
 const _fetch = (fetchPromise, timeout) => {
     return Promise.race([fetchPromise, timeOutPromise(timeout)]);
 }
