@@ -3,6 +3,8 @@ import  { get } from "./Fetch";
 
 const GET_NEWS_LIST_URL = 'http://v.juhe.cn/toutiao/index?';
 
+const NEWS_LIST_TYPE_CAIJING = '';
+
 export const getNewsList = async (type: string) => {
     try {
         const  resJson = await get(GET_NEWS_LIST_URL + 'type=' + type);

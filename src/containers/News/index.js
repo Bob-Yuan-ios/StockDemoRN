@@ -9,7 +9,10 @@ import {
     NewsFlatItem
 } from '../../component/newsflatItem';
 
-import { getNewsList } from '../../interfaces/network/ICNews';
+import {
+    getNewsList,
+    NEWS_LIST_TYPE_CAIJING
+} from '../../interfaces/network/ICNews';
 
 export default class NewsScreen extends Component{
 
@@ -65,18 +68,17 @@ export default class NewsScreen extends Component{
             refreshing: true
         });
 
-        let res = await getNewsList('caijing');
+        let res = await getNewsList(NEWS_LIST_TYPE_CAIJING);
 
         let model = {};
+
+        // UI上面的显示
         if (0 === res.status) model = res.object;
 
-        console.log('... upateNews...' + JSON.stringify(model));
         this.setState({
             refreshing: false,
             dataArr: model
         });
-
-        console.log('.... update account:' + JSON.stringify(res));
     }
 }
 
