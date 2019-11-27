@@ -1,18 +1,15 @@
-/*  ********** 参数传递 ************
- *  1、路由跳转：传递参数
- *  2、父子组件：props
- *  3、通知
- *  4、react-redux
- *  ******************************* */
-
 import React, { Component } from 'react';
 
 import {
     View,
-    Button
+    FlatList
 } from 'react-native';
 
-import { getMovies } from '../../interfaces/network/ICAccount';
+import {
+    NewsFlatItem
+} from '../../component/newsflatItem';
+
+import { getNewsList } from '../../interfaces/network/ICNews';
 
 export default class NewsScreen extends Component{
 
@@ -20,47 +17,63 @@ export default class NewsScreen extends Component{
         super(props);
 
         this.state = {
-            accInfo: {}
+            refreshing: false,
+            dataArr: []
         };
+
+        setTimeout(()=>{
+            this.updateNews();
+        }, 1000);
     }
 
-    componentDidUpdate(props){
-        //this.preProps
-        console.log('componentDidUpdate...' + JSON.stringify(props.accInfo));
-    }
+    _keyExtractor = (item, index) => index + "";
 
-    UNSAFE_componentWillUpdate(props){
-        // this.props
-        console.log('UNSAFE_componentWillUpdate...' + JSON.stringify(props.accInfo));
+    _onPressItem = (props) => {
+        console.log('catch click NewsFlatItem info:' + JSON.stringify(props));
+    };
+
+    // prop传递参数
+    _renderItem = ({item}) => {
+        return (
+            <NewsFlatItem
+                {...item}
+                onPressItem={this._onPressItem}
+            />
+        )
     }
 
     render() {
+        const dataArr = this.state.dataArr || [];
+        console.log('dataArr.....' + dataArr.length);
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Button
-                    title="refresh"
-                    onPress={this.updateAccount}
-                />
+            <View style = {{height: '100%'}}>
+                <FlatList
+                    data = {dataArr}
+                    renderItem = {this._renderItem}
+                    keyExtractor = {this._keyExtractor}
+                >
+                </FlatList>
             </View>
         );
     }
 
-    // 通过箭头函数，绑定this
-    // 可实现UI上的加载刷新
-    updateAccount = async () => {
+
+    // 数据只在此页面使用，使用普通的数据刷新　
+    updateNews = async () => {
 
         this.setState({
-            refresh: true
+            refreshing: true
         });
 
-        let res = await getMovies();
+        let res = await getNewsList('caijing');
 
         let model = {};
         if (0 === res.status) model = res.object;
 
+        console.log('... upateNews...' + JSON.stringify(model));
         this.setState({
-            refresh: false,
-            accInfo: model
+            refreshing: false,
+            dataArr: model
         });
 
         console.log('.... update account:' + JSON.stringify(res));

@@ -1,8 +1,9 @@
 
+const STOCK_APP_KEY = 'bab18498ce6a97b81a5cdaabbf55bb12';
 
-const APPKEY = 'bab18498ce6a97b81a5cdaabbf55bb12';
+const NEWS_APP_KEY = 'dae12e801c2d9e563930b78a3ce78546';
+
 const TIMEOUT = 1500;
-
 
 /*    ************************  直接数据请求 ****************************
  *    1、数据不需要复用
@@ -10,12 +11,14 @@ const TIMEOUT = 1500;
  *    3、View数据来源单一　
  *    4、主动获取数据更新
  *    **************************************************************** */
-export const get = async function getF(url: string) {
-    return _fetch(fetchPromise('GET', url), TIMEOUT).then((resJson)=>{
+export const get = async (url: string) => {
+    let fetchUrl = url + '&key=' + NEWS_APP_KEY;
+    console.log('fetchUrl...:' + fetchUrl);
+    return _fetch(fetchPromise('GET', fetchUrl), TIMEOUT).then((resJson)=>{
         console.log('success:' + JSON.stringify(resJson));
         return {
             status: 0,
-            object: resJson
+            object: resJson.result.data
         };
     }).catch((e)=>{
         // 可以根据异常定义对应的逻辑
@@ -29,7 +32,7 @@ export const get = async function getF(url: string) {
     });
 }
 
-export const post = async function postF(url: string, body: object) {
+export const post = async (url: string, body: object) => {
     return _fetch(fetchPromise('POST', url, body), TIMEOUT).then((resJson)=>{
         return resJson;
     }).catch((e)=>{
@@ -44,13 +47,13 @@ export const post = async function postF(url: string, body: object) {
  *    3、View数据来源多个　
  *    4、被动数据更新
  *    **************************************************************** */
-export const getWithRedux = async function getRF(url: string) {
+export const getWithRedux = async (url: string) => {
 
-    const fetchUrl = url + '&key=' + APPKEY;
+    const fetchUrl = url + '&key=' + STOCK_APP_KEY;
     return _fetch(fetchPromise('GET', fetchUrl), TIMEOUT);
 }
 
-export const postWithRedux = async function postRF(url: string, body: object) {
+export const postWithRedux = async (url: string, body: object) => {
 
     // try {
     //

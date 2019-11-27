@@ -49,7 +49,7 @@ class StockScreen extends Component{
 
 
     _onPressItem = (props) => {
-        console.log('catch click item info:' + JSON.stringify(props));
+        console.log('catch click StockFlatItem info:' + JSON.stringify(props));
     };
 
     // prop传递参数
