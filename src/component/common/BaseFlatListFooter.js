@@ -10,11 +10,6 @@ import {
 
 export class BaseFlatListFooter extends Component{
 
-    constructor(props){
-        super(props);
-
-    }
-
     render(){
         const  isFooterLoading = this.props.isFooterLoading;
         const  reachLast = this.props.reachLast;

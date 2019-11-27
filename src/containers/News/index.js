@@ -12,12 +12,10 @@ import {
     Button
 } from 'react-native';
 
-import { connect } from 'react-redux'
 import { accInfo } from '../../models/Account';
 import { getMovies } from '../../interfaces/network/ICAccount';
 
-
-class NewsScreen extends Component{
+export default class NewsScreen extends Component{
 
     constructor(props){
         super(props);
@@ -42,39 +40,18 @@ class NewsScreen extends Component{
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Button
                     title="refresh"
-                    onPress={() => {
-                        this.updateAccount();
-                    }}
+                    onPress={this.updateAccount}
                 />
             </View>
         );
     }
 
 
-    updateAccount = () => {
-        // this.props.update({
-        //     ...accInfo,
-        //     favorUrl: 'www.baidu.com'
-        // });
-        this.props.update();
+
+    updateAccount = async function getMovies1() {
+        let res = await getMovies();
+        console.log('.... update account' + JSON.stringify(res));
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        accInfo: state.account,
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        // update: (info) => dispatch(updateBalanceInfo(info)),
-        update: () => dispatch(dispatch(getMovies())), //中间件，执行对store进行dispatch封装
-    }
-
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(NewsScreen)

@@ -8,7 +8,6 @@ import {
 } from  'react-native';
 
 import {
-    THEME_COLOR,
     TITLE_COLOR,
     CONTENT_COLOR,
     TITLE_FONT_SIZE,
@@ -16,7 +15,6 @@ import {
     SCREEN_MARGIN_SPACE,
     ITEM_MARGIN_SPACE
 } from '../../constant/CommonConfig';
-
 
 
 export class StockFlatItem extends Component{
