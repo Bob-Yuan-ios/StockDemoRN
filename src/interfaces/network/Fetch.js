@@ -1,7 +1,7 @@
 
-const STOCK_APP_KEY = '股票行情KEY';
+const STOCK_APP_KEY = 'bab18498ce6a97b81a5cdaabbf55bb12';
 
-const NEWS_APP_KEY = '新闻资讯KEY';
+const NEWS_APP_KEY = 'dae12e801c2d9e563930b78a3ce78546';
 
 const TIMEOUT = 1500;
 
@@ -16,18 +16,24 @@ export const get = async (url: string) => {
     console.log('fetchUrl...:' + fetchUrl);
     return _fetch(fetchPromise('GET', fetchUrl), TIMEOUT).then((resJson)=>{
         console.log('success:' + JSON.stringify(resJson));
-        return {
-            status: 0,
-            object: resJson.result.data
-        };
+        if (!resJson.resultcode){
+            return {
+                status: -1,
+                object: resJson.reason
+            };
+        } else {
+            return {
+                status: 0,
+                object: resJson.result.data
+            };
+        }
+
     }).catch((e)=>{
         // 可以根据异常定义对应的逻辑
         console.log('error information:' + JSON.stringify(e));
         return {
-            status: -1,
-            object: {
-                msg: '请求超时'
-            }
+            status: -2,
+            object: '请求出错...'
         }
     });
 }

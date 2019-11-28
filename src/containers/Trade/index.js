@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 
 import {
-    View,
-    Text,
-    FlatList
+    View
 } from 'react-native';
-
 
 export default class TradeScreen extends Component{
 
@@ -17,17 +14,11 @@ export default class TradeScreen extends Component{
 
     render() {
         return (
-            <View style={{color:'#1234fa'}}>
-                <FlatList
-                    keyExtractor={this._keyExtractor}
-                    style={{backgroundColor:'green', height:'100%'}}
-                    data={[{name: 'a'}, {name: 'b'},{name: 'c'}, {name: 'd'}]}
-                    renderItem={({item, i}) => <Text style={{textAlign:'center'}}>{item.name} + tradeList</Text>}
-                >
-                </FlatList>
-            </View>
+            <View
+                style={{backgroundColor:'yellow', height:'100%'}}
+            />
         );
     }
 
-
 }
+
