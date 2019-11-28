@@ -1,7 +1,7 @@
 
-const STOCK_APP_KEY = 'bab18498ce6a97b81a5cdaabbf55bb12';
+const STOCK_APP_KEY = '股票行情KEY';
 
-const NEWS_APP_KEY = 'dae12e801c2d9e563930b78a3ce78546';
+const NEWS_APP_KEY = '新闻资讯KEY';
 
 const TIMEOUT = 1500;
 
