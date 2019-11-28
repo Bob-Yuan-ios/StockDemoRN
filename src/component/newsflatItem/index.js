@@ -15,7 +15,8 @@ import {
     CONTENT_FONT_SIZE,
     SCREEN_MARGIN_SPACE,
     ITEM_MARGIN_SPACE,
-    SCREEN_WIDTH
+    SCREEN_WIDTH,
+    HIGHT_LIGHT_COLOR
 } from '../../constant/CommonConfig';
 
 // import PropTypes from 'prop-types';
@@ -27,6 +28,7 @@ export class NewsFlatItem extends Component{
 
         return (
             <TouchableHighlight
+                underlayColor={HIGHT_LIGHT_COLOR}
                 onPress={this._onPressItem}
             >
                 <View style={styles.container}>

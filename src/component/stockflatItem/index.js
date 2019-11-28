@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import {
     StyleSheet,
@@ -17,7 +17,7 @@ import {
 } from '../../constant/CommonConfig';
 
 
-export class StockFlatItem extends Component{
+export class StockFlatItem extends PureComponent{
 
     render(){
         const props = this.props;
