@@ -10,8 +10,6 @@ export default class TradeScreen extends Component{
         super(props);
     }
 
-    _keyExtractor = (item, index) => index + "";
-
     render() {
         return (
             <View

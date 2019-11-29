@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-    View,
-    Text,
-    FlatList
+    View
 } from 'react-native';
 
 
@@ -13,19 +11,11 @@ export default class UserCenterScreen extends Component{
         super(props);
     }
 
-    _keyExtractor = (item, index) => index + "";
-
     render() {
         return (
-            <View style={{color:'#1234fa'}}>
-                <FlatList
-                    keyExtractor={this._keyExtractor}
-                    style={{backgroundColor:'yellow', height:'100%'}}
-                    data={[{name: 'a'}, {name: 'b'},{name: 'c'}, {name: 'd'}]}
-                    renderItem={({item, i}) => <Text style={{textAlign:'center'}}>{item.name} + userCenter</Text>}
-                >
-                </FlatList>
-            </View>
+            <View
+                style={{backgroundColor:'gray', height:'100%'}}
+            />
         );
     }
 }
