@@ -15,8 +15,10 @@ export const get = async (url: string) => {
     let fetchUrl = url + '&key=' + NEWS_APP_KEY;
     console.log('fetchUrl...:' + fetchUrl);
     return _fetch(fetchPromise('GET', fetchUrl), TIMEOUT).then((resJson)=>{
-        console.log('success:' + JSON.stringify(resJson));
-        if (!resJson.resultcode){
+
+        const state = resJson.result.stat;
+        if (undefined === state ||
+            '1' !== state){
             return {
                 status: -1,
                 object: resJson.reason
@@ -87,6 +89,7 @@ export const postWithRedux = async (url: string, body: object) => {
     // }catch (e) {
     //     console.log('error information...' + JSON.stringify(e));
     // }
+
 }
 
 

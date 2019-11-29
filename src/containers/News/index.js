@@ -27,7 +27,7 @@ export default class NewsScreen extends Component{
         this.state = {
             refreshing: false,
             dataArr: [],
-            errTip: ''
+            errTip: 'No Data...'
         };
 
         setTimeout(()=>{
@@ -38,7 +38,7 @@ export default class NewsScreen extends Component{
     _keyExtractor = (item, index) => index + "";
 
     _onPressItem = (props) => {
-        console.log('catch click NewsFlatItem info:' + JSON.stringify(props));
+        console.log('catch click news flat item info:' + JSON.stringify(props));
         this.props.navigation.navigate('NewsDetail',
             {
                 url: props.url,
@@ -99,31 +99,31 @@ export default class NewsScreen extends Component{
     // 数据只在此页面使用，使用普通的数据刷新　
     updateNews = async () => {
 
-        let type = this.getType();
-        if (!type.length) return;
-
-        this.setState({
-            refreshing: true
-        });
-
-        let res = await getNewsList(type);
-
-
-        // UI上面的显示
-        if (0 === res.status){
-            this.setState({
-                refreshing: false,
-                dataArr: res.object,
-                errTip: ''
-            });
-        } else {
-            this.setState({
-                refreshing: false,
-                dataArr: [],
-                errTip: res.object
-            });
-        }
-
+        // let type = this.getType();
+        // console.log('updateNews....:' + type);
+        // if (!type.length || NEWS_LIST_TYPE_TOU_TIAO !== type) return;
+        //
+        // this.setState({
+        //     refreshing: true
+        // });
+        //
+        // let res = await getNewsList(type);
+        //
+        //
+        // // UI上面的显示
+        // if (0 === res.status){
+        //     this.setState({
+        //         refreshing: false,
+        //         dataArr: res.object,
+        //         errTip: ''
+        //     });
+        // } else {
+        //     this.setState({
+        //         refreshing: false,
+        //         dataArr: [],
+        //         errTip: res.object
+        //     });
+        // }
 
     }
 }

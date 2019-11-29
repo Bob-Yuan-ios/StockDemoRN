@@ -19,6 +19,7 @@ export const NEWS_LIST_TYPE_YU_LE = 'yule';
 export const getNewsList = async (type: string) => {
     try {
         const resJson = await get(GET_NEWS_LIST_URL + 'type=' + type);
+        console.log('getNewsList....' + JSON.stringify(resJson));
         return resJson;
     }catch (e) {
       console.log('error message:' + JSON.stringify(e));
