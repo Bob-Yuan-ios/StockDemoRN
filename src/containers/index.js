@@ -20,14 +20,18 @@ import {
 } from 'react-navigation-tabs';
 
 
-///////////////////////////////////////////////////////
+//////////////////////注册页//////////////////////////////////////////////////
+// 动态构建标签栏
+let data: Array = ['头条', '财经', '科技', '娱乐'];
+
 const  tabPages = () => {
-    let data: Array = ['头条', '财经', '科技', '娱乐'];
     let pages = {};
 
     data.map((value, index) => {
         pages[value] = {
-            screen: ({navigation}) => {  return <NewsScreen navigation={navigation} /> },
+            screen: ({navigation}) => {
+                return <NewsScreen navigation={navigation} />
+            },
             navigationOptions: {
                 tabBarLabel: value,
             }
@@ -40,7 +44,7 @@ const  tabPages = () => {
 const tradeNav = createMaterialTopTabNavigator(
     tabPages(),
     {
-        initialRouteName: '头条',
+        initialRouteName: data[0],
         tabBarOptions: {
             lazy: true,
             activeTintColor: 'yellow',
@@ -48,37 +52,13 @@ const tradeNav = createMaterialTopTabNavigator(
         },
     }
 );
-/////////////////////////////////////////////////////
 
 
-// 注册单个页面的StackNavigator
 const NewsStack = createStackNavigator({
     NewList: tradeNav,
     NewsDetail: NewsDetail,
 },{
     initialRouteName: 'NewList',
-});
-
-
-const StockStack = createStackNavigator({
-    StockList: StockScreen,
-    StockDetail: StockDetail,
-},{
-    initialRouteName: 'StockList',
-});
-
-const TradeStack = createStackNavigator({
-    TradeList: TradeScreen,
-    TradesDetail: TradeDetail,
-},{
-    initialRouteName: 'TradeList',
-});
-
-
-const UserCenterStack = createStackNavigator({
-    UserCenter: UserCenterScreen,
-},{
-    initialRouteName: 'UserCenter',
 });
 
 
@@ -94,6 +74,16 @@ NewsStack.navigationOptions = ({ navigation }) => {
     });
 
 };
+////////////////////////////////////////////////////////////////////////////
+
+////////////////////////行情页///////////////////////////////////////////////
+const StockStack = createStackNavigator({
+    StockList: StockScreen,
+    StockDetail: StockDetail,
+},{
+    initialRouteName: 'StockList',
+});
+
 
 StockStack.navigationOptions = ({ navigation }) => {
 
@@ -106,7 +96,16 @@ StockStack.navigationOptions = ({ navigation }) => {
     });
 
 };
+/////////////////////////////////////////////////////////////////////////////
 
+
+///////////////////////////交易页////////////////////////////////////////////
+const TradeStack = createStackNavigator({
+    TradeList: TradeScreen,
+    TradesDetail: TradeDetail,
+},{
+    initialRouteName: 'TradeList',
+});
 
 TradeStack.navigationOptions = ({ navigation }) => {
 
@@ -119,6 +118,16 @@ TradeStack.navigationOptions = ({ navigation }) => {
     });
 
 };
+//////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////个人中心///////////////////////////////////////////
+const UserCenterStack = createStackNavigator({
+    UserCenter: UserCenterScreen,
+},{
+    initialRouteName: 'UserCenter',
+});
+
 
 UserCenterStack.navigationOptions = ({ navigation }) => {
 
@@ -131,22 +140,16 @@ UserCenterStack.navigationOptions = ({ navigation }) => {
     });
 
 };
-
-//可动态定义
-const tabNav = () => {
-    return {
-        Stock: StockStack,
-        Trade: TradeStack,
-        UserCenter: UserCenterStack
-    }
-}
+//////////////////////////////////////////////////////////////////////////////
 
 
-// 注册整个底部tabNavigator
+// 注册整个底部tabNavigator ////////////////////////////////////////////////////
 const TabBarNav = createBottomTabNavigator(
     {
         News: NewsStack,
-        ...tabNav()
+        Stock: StockStack,
+        Trade: TradeStack,
+        UserCenter: UserCenterStack
     },
     {
         initialRouteName: 'News',
@@ -158,4 +161,5 @@ const TabBarNav = createBottomTabNavigator(
 );
 
 // 生成应用程序的根视图
-export default RootStackContainer = createAppContainer(TabBarNav); // Use this
+export default RootStackContainer = createAppContainer(TabBarNav);
+///////////////////////////////////////////////////////////////////////////////
