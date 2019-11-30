@@ -21,7 +21,7 @@ import {
 
 
 //////////////////////注册页//////////////////////////////////////////////////
-// 动态构建标签栏
+// 动态构建标签栏;数据来源动态配置生成===========================================
 let data: Array = ['头条', '财经', '科技', '娱乐'];
 
 const  tabPages = () => {
@@ -41,7 +41,7 @@ const  tabPages = () => {
     return pages;
 }
 
-const tradeNav = createMaterialTopTabNavigator(
+const newsNav = createMaterialTopTabNavigator(
     tabPages(),
     {
         initialRouteName: data[0],
@@ -55,7 +55,7 @@ const tradeNav = createMaterialTopTabNavigator(
 
 
 const NewsStack = createStackNavigator({
-    NewList: tradeNav,
+    NewList: newsNav,
     NewsDetail: NewsDetail,
 },{
     initialRouteName: 'NewList',
