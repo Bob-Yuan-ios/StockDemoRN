@@ -21,6 +21,8 @@ export class StockFlatItem extends PureComponent{
 
     render(){
         const props = this.props;
+        console.log('stockFlatItem...' + JSON.stringify(props));
+
         return (
             <TouchableHighlight
                 onPress={this._onPressItem}
@@ -69,6 +71,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
 
         margin: SCREEN_MARGIN_SPACE,
+        backgroundColor: 'yellow'
     },
 
     leftContainer: {

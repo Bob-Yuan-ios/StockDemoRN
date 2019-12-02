@@ -30,9 +30,9 @@ export default class NewsScreen extends Component{
             errTip: 'None Data...'
         };
 
-        setTimeout(()=>{
-            this.updateNews();
-        }, 1000);
+        // setTimeout(()=>{
+        //     this.updateNews();
+        // }, 1000);
     }
 
     _keyExtractor = (item, index) => index + "";

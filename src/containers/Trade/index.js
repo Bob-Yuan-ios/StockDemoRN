@@ -1,22 +1,16 @@
 import React, { Component } from 'react';
 
-import {
-    View
-} from 'react-native';
+import { NewsFlatItem } from '../../component/newsflatItem';
+import BaseFlatList from '../../component/common/BaseFlatList';
+
 
 export default class TradeScreen extends Component{
 
-    constructor(props){
-        super(props);
-    }
-
     render() {
-        return (
-            <View
-                style={{backgroundColor:'yellow', height:'100%'}}
+         return (
+            <BaseFlatList
+                ItemCom = {NewsFlatItem}
             />
         );
     }
-
 }
-
