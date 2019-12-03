@@ -27,7 +27,7 @@ export default class BaseFlatList extends Component{
 
 
         setTimeout(()=>{
-            this.updateNews();
+            this.updateNews().then().catch();
         }, 1000);
     }
 
@@ -58,8 +58,8 @@ export default class BaseFlatList extends Component{
 
     // prop传递参数
     _renderItem = ({item}) => {
-
         const  ItemCom = this.props.ItemCom;
+        console.log('...item' + JSON.stringify(item));
 
         return (
             <ItemCom
@@ -139,7 +139,24 @@ export default class BaseFlatList extends Component{
     }
 
     updateNews = async () =>{
-        let res = await getNewsList(NEWS_LIST_TYPE_CAI_JING);
+
+
+        let res = null;
+
+        const params = this.props.params;
+
+        if (params === undefined || params.requestMethod === undefined) return;
+
+        console.log('params...' + JSON.stringify(params));
+
+        switch (params.requestMethod){
+            case 'NewsList':{
+                res = await getNewsList(NEWS_LIST_TYPE_CAI_JING);
+                break;
+            }
+            default:
+                break;
+        }
 
         // UI上面的显示
         if (0 === res.status){

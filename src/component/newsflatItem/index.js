@@ -25,6 +25,7 @@ export class NewsFlatItem extends Component{
 
     render(){
         const props = this.props;
+console.log('.....' + JSON.stringify(props));
 
         return (
             <TouchableHighlight
