@@ -9,6 +9,14 @@
     "test": "jest",
     "lint": "eslint ."
   },
+  "eslintConfig": {
+    "extends": "react-app",
+    "rules": {
+      "no-undef": "off",
+      "no-restricted-globals": "off",
+      "no-unused-vars": "off"
+    }
+  },
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "16.9.0",

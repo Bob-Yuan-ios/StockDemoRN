@@ -4,13 +4,9 @@ import rootReducer from '../reducers/index';
 import thunk from 'redux-thunk';
 
 export default function configureStore(initState) {
-    const store = createStore(
-        rootReducer,
-        initState,
-        applyMiddleware(thunk)
-    );
+  const store = createStore(rootReducer, initState, applyMiddleware(thunk));
 
-    global.AppReduxState = store;
+  global.AppReduxState = store;
 
-    return store;
+  return store;
 }

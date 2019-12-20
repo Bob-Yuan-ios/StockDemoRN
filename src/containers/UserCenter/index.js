@@ -1,21 +1,13 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import {
-    View
-} from 'react-native';
+import {View} from 'react-native';
 
+export default class UserCenterScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-export default class UserCenterScreen extends Component{
-
-    constructor(props){
-        super(props);
-    }
-
-    render() {
-        return (
-            <View
-                style={{backgroundColor:'gray', height:'100%'}}
-            />
-        );
-    }
+  render() {
+    return <View style={{backgroundColor: 'gray', height: '100%'}} />;
+  }
 }

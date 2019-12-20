@@ -1,7 +1,4 @@
-
-import{
-    Dimensions
-}from 'react-native';
+import {Dimensions} from 'react-native';
 
 export const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -28,4 +25,3 @@ export const SCREEN_MARGIN_SPACE = 15;
 
 // 通用边距 文本组件边距
 export const ITEM_MARGIN_SPACE = 5;
-

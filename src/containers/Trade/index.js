@@ -1,20 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import { NewsFlatItem } from '../../component/newsflatItem';
-import BaseFlatList from '../../component/common/BaseFlatList';
+import {View} from 'react-native';
 
-
-export default class TradeScreen extends Component{
-
-
-
-    render() {
-        const  params =  {requestMethod:'NewsList'};
-         return (
-            <BaseFlatList
-                params = {params}
-                ItemCom = {NewsFlatItem}
-            />
-        );
-    }
+export default class TradeScreen extends Component {
+  render() {
+    return <View />;
+  }
 }

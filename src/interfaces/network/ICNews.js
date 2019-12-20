@@ -1,5 +1,4 @@
-
-import  { get } from "./Fetch";
+import {get} from './Fetch';
 
 const GET_NEWS_LIST_URL = 'http://v.juhe.cn/toutiao/index?';
 
@@ -26,12 +25,11 @@ export const NEWS_LIST_TYPE_KE_JI = 'keji';
 export const NEWS_LIST_TYPE_YU_LE = 'yule';
 
 export const getNewsList = async (type: string) => {
-    try {
-        const resJson = await get(GET_NEWS_LIST_URL + 'type=' + type);
-        console.log('getNewsList....' + JSON.stringify(resJson));
-        return resJson;
-    }catch (e) {
-      console.log('error message:' + JSON.stringify(e));
-    }
-
-}
+  try {
+    const resJson = await get(GET_NEWS_LIST_URL + 'type=' + type);
+    console.log('getNewsList....' + JSON.stringify(resJson));
+    return resJson;
+  } catch (e) {
+    console.log('error message:' + JSON.stringify(e));
+  }
+};

@@ -16,11 +16,10 @@ const store = configureStore({});
 
 const App: () => React$Node = () => {
   return (
-      <Provider store={store}>
-          <RootStackContainer />
-      </Provider>
+    <Provider store={store}>
+      <RootStackContainer />
+    </Provider>
   );
 };
 
 export default App;
-

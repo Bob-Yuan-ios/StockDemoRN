@@ -1,106 +1,89 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+
+import {View, Text, Image, StyleSheet, TouchableHighlight} from 'react-native';
 
 import {
-    View,
-    Text,
-    Image,
-    StyleSheet,
-    TouchableHighlight
-} from  'react-native';
-
-import {
-    TITLE_COLOR,
-    CONTENT_COLOR,
-    TITLE_FONT_SIZE,
-    CONTENT_FONT_SIZE,
-    SCREEN_MARGIN_SPACE,
-    ITEM_MARGIN_SPACE,
-    SCREEN_WIDTH,
-    HIGHT_LIGHT_COLOR
+  TITLE_COLOR,
+  CONTENT_COLOR,
+  TITLE_FONT_SIZE,
+  CONTENT_FONT_SIZE,
+  SCREEN_MARGIN_SPACE,
+  ITEM_MARGIN_SPACE,
+  SCREEN_WIDTH,
+  HIGHT_LIGHT_COLOR,
 } from '../../constant/CommonConfig';
 
 // import PropTypes from 'prop-types';
 
-export class NewsFlatItem extends Component{
+export class NewsFlatItem extends Component {
+  render() {
+    const props = this.props;
+    console.log('.....' + JSON.stringify(props));
 
-    render(){
-        const props = this.props;
-console.log('.....' + JSON.stringify(props));
+    return (
+      <TouchableHighlight
+        underlayColor={HIGHT_LIGHT_COLOR}
+        onPress={this._onPressItem}>
+        <View style={styles.container}>
+          <View style={styles.imgContainer}>
+            <Image
+              style={styles.thumbImgStyle}
+              source={{uri: props.thumbnail_pic_s}}
+            />
+          </View>
 
-        return (
-            <TouchableHighlight
-                underlayColor={HIGHT_LIGHT_COLOR}
-                onPress={this._onPressItem}
-            >
-                <View style={styles.container}>
-                    <View style={styles.imgContainer}>
-                        <Image
-                            style={styles.thumbImgStyle}
-                            source={{uri: props.thumbnail_pic_s}}
-                        />
-                    </View>
+          <View style={styles.txtContainer}>
+            <Text stlye={styles.titleStyle}>{props.title}</Text>
+            <Text style={styles.conStyle}>
+              {props.author_name} {props.date}
+            </Text>
+          </View>
+        </View>
+      </TouchableHighlight>
+    );
+  }
 
-
-                    <View style={styles.txtContainer}>
-                        <Text stlye={styles.titleStyle}>
-                            {props.title}
-                        </Text>
-                        <Text style={styles.conStyle}>
-                            {props.author_name}  {props.date}
-                        </Text>
-                    </View>
-
-                </View>
-            </TouchableHighlight>
-
-        );
-    }
-
-    _onPressItem = () => {
-        this.props.onPressItem(this.props);
-    };
+  _onPressItem = () => {
+    this.props.onPressItem(this.props);
+  };
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: SCREEN_MARGIN_SPACE,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    textAlign: 'center',
+  },
 
-    container: {
-        flex: 1,
-        padding: SCREEN_MARGIN_SPACE,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        textAlign: 'center'
-    },
+  imgContainer: {
+    height: '100%',
+    justifyContent: 'center',
+  },
 
+  thumbImgStyle: {
+    width: 120,
+    height: 90,
+  },
 
-    imgContainer: {
-        height: '100%',
-        justifyContent: 'center',
-    },
+  txtContainer: {
+    width: SCREEN_WIDTH - 120 - SCREEN_MARGIN_SPACE * 2,
+    padding: ITEM_MARGIN_SPACE,
+  },
 
-    thumbImgStyle: {
-        width: 120,
-        height: 40,
-    },
+  titleStyle: {
+    color: TITLE_COLOR,
+    fontSize: TITLE_FONT_SIZE,
+    margin: ITEM_MARGIN_SPACE,
+  },
 
-    txtContainer:{
-        width:  SCREEN_WIDTH - 120 - SCREEN_MARGIN_SPACE * 2,
-        padding: ITEM_MARGIN_SPACE,
-    },
-
-    titleStyle: {
-        color: TITLE_COLOR,
-        fontSize: TITLE_FONT_SIZE,
-        margin: ITEM_MARGIN_SPACE
-    },
-
-    conStyle: {
-        color: CONTENT_COLOR,
-        fontSize: CONTENT_FONT_SIZE,
-        margin: ITEM_MARGIN_SPACE
-    },
-
+  conStyle: {
+    color: CONTENT_COLOR,
+    fontSize: CONTENT_FONT_SIZE,
+    margin: ITEM_MARGIN_SPACE,
+  },
 });
-
 
 /**
  * 属性参数

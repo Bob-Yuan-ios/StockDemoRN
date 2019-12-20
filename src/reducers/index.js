@@ -1,10 +1,9 @@
-import {combineReducers} from  'redux';
+import {combineReducers} from 'redux';
 
 import stockList from './Stock';
 
 const rootReducer = combineReducers({
-    stockList,
+  stockList,
 });
-
 
 export default rootReducer;
