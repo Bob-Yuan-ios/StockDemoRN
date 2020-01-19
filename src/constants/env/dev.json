@@ -1,0 +1,5 @@
+{
+  "ENV": "dev",
+  "FUND_SOCKET_URL": "ws://172.27.3.26:10110/ws_book"
+}
+

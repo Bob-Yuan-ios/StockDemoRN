@@ -22,8 +22,8 @@ export default class NewsScreen extends Component {
       errTip: 'None Data...',
     };
 
-    setTimeout(()=>{
-        this.updateNews();
+    setTimeout(() => {
+      this.updateNews();
     }, 1000);
   }
 

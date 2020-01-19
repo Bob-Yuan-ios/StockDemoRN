@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Button} from 'react-native';
+import {Button, NativeModules} from 'react-native';
 
 import {WebView} from 'react-native-webview';
 
@@ -18,7 +18,13 @@ export default class NewsDetail extends Component {
         backgroundColor: navigationOptions.headerTintColor,
       },
       headerRight: () => (
-        <Button onPress={() => alert(title)} title="Detail" color="#1f1e2d" />
+        <Button
+          title="Detail"
+          color="#1f1e2d"
+          onPress={() => {
+            NativeModules.YYReactBrideM.pushVideoRecord();
+          }}
+        />
       ),
     };
   };

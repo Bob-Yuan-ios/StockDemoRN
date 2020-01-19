@@ -31,5 +31,6 @@ export const getNewsList = async (type: string) => {
     return resJson;
   } catch (e) {
     console.log('error message:' + JSON.stringify(e));
+    return [];
   }
 };

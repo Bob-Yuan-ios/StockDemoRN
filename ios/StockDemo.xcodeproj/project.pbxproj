@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048FF60223D1883E00E08302 /* YYVideoRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FF60123D1883E00E08302 /* YYVideoRecordVC.m */; };
+		048FF60523D1886000E08302 /* YYReactBrideM.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FF60423D1886000E08302 /* YYReactBrideM.m */; };
+		048FF60923D18C0C00E08302 /* YYRootNavVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FF60823D18C0C00E08302 /* YYRootNavVC.m */; };
 		04D0CFC723AC77DC003B58E3 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D0CFC523AC77DC003B58E3 /* YYFPSLabel.m */; };
 		04D0CFCA23AC7A0F003B58E3 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D0CFC823AC7A0E003B58E3 /* YYWeakProxy.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -20,6 +23,12 @@
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* StockDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StockDemoTests.m; sourceTree = "<group>"; };
+		048FF60023D1883E00E08302 /* YYVideoRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYVideoRecordVC.h; sourceTree = "<group>"; };
+		048FF60123D1883E00E08302 /* YYVideoRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYVideoRecordVC.m; sourceTree = "<group>"; };
+		048FF60323D1886000E08302 /* YYReactBrideM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYReactBrideM.h; sourceTree = "<group>"; };
+		048FF60423D1886000E08302 /* YYReactBrideM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYReactBrideM.m; sourceTree = "<group>"; };
+		048FF60723D18C0C00E08302 /* YYRootNavVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYRootNavVC.h; sourceTree = "<group>"; };
+		048FF60823D18C0C00E08302 /* YYRootNavVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYRootNavVC.m; sourceTree = "<group>"; };
 		04D0CFC523AC77DC003B58E3 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		04D0CFC623AC77DC003B58E3 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
 		04D0CFC823AC7A0E003B58E3 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
@@ -74,6 +83,12 @@
 				04D0CFC823AC7A0E003B58E3 /* YYWeakProxy.m */,
 				04D0CFC623AC77DC003B58E3 /* YYFPSLabel.h */,
 				04D0CFC523AC77DC003B58E3 /* YYFPSLabel.m */,
+				048FF60323D1886000E08302 /* YYReactBrideM.h */,
+				048FF60423D1886000E08302 /* YYReactBrideM.m */,
+				048FF60723D18C0C00E08302 /* YYRootNavVC.h */,
+				048FF60823D18C0C00E08302 /* YYRootNavVC.m */,
+				048FF60023D1883E00E08302 /* YYVideoRecordVC.h */,
+				048FF60123D1883E00E08302 /* YYVideoRecordVC.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -265,10 +280,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048FF60923D18C0C00E08302 /* YYRootNavVC.m in Sources */,
 				04D0CFCA23AC7A0F003B58E3 /* YYWeakProxy.m in Sources */,
 				04D0CFC723AC77DC003B58E3 /* YYFPSLabel.m in Sources */,
+				048FF60523D1886000E08302 /* YYReactBrideM.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				048FF60223D1883E00E08302 /* YYVideoRecordVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

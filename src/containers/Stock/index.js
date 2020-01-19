@@ -6,7 +6,7 @@ import {StockFlatItem} from '../../component/stockflatItem';
 import {BaseFlatListFooter} from '../../component/common/BaseFlatListFooter';
 
 import {connect} from 'react-redux';
-import {getStockList} from '../../interfaces/network/ICStock';
+import {updateStockList} from '../../actions/Stock';
 
 class StockScreen extends Component {
   constructor(props) {
@@ -129,7 +129,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadStockList: pageNum => dispatch(dispatch(getStockList(pageNum))),
+    loadStockList: pageNum => dispatch(updateStockList(pageNum)),
   };
 };
 

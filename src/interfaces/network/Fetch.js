@@ -111,7 +111,7 @@ const fetchPromise = (method, url, body) => {
   });
 };
 
-const timeOutPromise = (timeout = 1500) => {
+const timeOutPromise = (timeout = TIMEOUT) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       reject('time out...');
