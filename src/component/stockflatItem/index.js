@@ -9,7 +9,7 @@ import {
   CONTENT_FONT_SIZE,
   SCREEN_MARGIN_SPACE,
   ITEM_MARGIN_SPACE,
-} from '../../constant/CommonConfig';
+} from '../../constants/CommonConfig';
 
 export class StockFlatItem extends PureComponent {
   render() {

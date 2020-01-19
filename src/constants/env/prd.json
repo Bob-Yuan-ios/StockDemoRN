@@ -1,5 +1,5 @@
 {
-  "ENV": "dev",
+  "ENV": "prd",
   "STOCK_LIST_URL" : "http://web.juhe.cn:8080/finance/stock/szall?",
   "GET_NEWS_LIST_URL" : "http://v.juhe.cn/toutiao/index?"
 }

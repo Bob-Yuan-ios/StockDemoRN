@@ -7,7 +7,7 @@ import {WebView} from 'react-native-webview';
 import {
   SCREEN_MARGIN_SPACE,
   ITEM_MARGIN_SPACE,
-} from '../../constant/CommonConfig';
+} from '../../constants/CommonConfig';
 
 export default class NewsDetail extends Component {
   static navigationOptions = ({navigation, navigationOptions}) => {

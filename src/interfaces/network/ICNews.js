@@ -1,6 +1,5 @@
 import {get} from './Fetch';
-
-const GET_NEWS_LIST_URL = 'http://v.juhe.cn/toutiao/index?';
+import {GET_NEWS_LIST_URL} from '../../constants/env';
 
 /*
 类型,,

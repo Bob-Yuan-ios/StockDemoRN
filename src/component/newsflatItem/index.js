@@ -11,7 +11,7 @@ import {
   ITEM_MARGIN_SPACE,
   SCREEN_WIDTH,
   HIGHT_LIGHT_COLOR,
-} from '../../constant/CommonConfig';
+} from '../../constants/CommonConfig';
 
 // import PropTypes from 'prop-types';
 

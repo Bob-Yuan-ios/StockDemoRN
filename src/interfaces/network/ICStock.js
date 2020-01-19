@@ -1,6 +1,6 @@
 import {getWithRedux} from './Fetch';
 
-const STOCK_LIST_URL = 'http://web.juhe.cn:8080/finance/stock/szall?';
+import {STOCK_LIST_URL} from '../../constants/env';
 
 export const getStockList = async (pageNum: string) => {
   const url = STOCK_LIST_URL + 'page=' + pageNum;
