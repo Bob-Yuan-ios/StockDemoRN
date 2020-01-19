@@ -15,16 +15,7 @@ import {
 export default class NewsScreen extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      dataArr: [],
-      refreshing: false,
-      errTip: 'None Data...',
-    };
-
-    setTimeout(() => {
-      this.updateNews();
-    }, 1000);
+    this.state = this.updateNews();
   }
 
   _keyExtractor = (item, index) => index + '';
@@ -93,17 +84,17 @@ export default class NewsScreen extends Component {
 
     // UI上面的显示
     if (res.status === 0) {
-      this.setState({
+      return {
         refreshing: false,
         dataArr: res.object,
         errTip: '',
-      });
+      };
     } else {
-      this.setState({
+      return {
         refreshing: false,
         dataArr: [],
         errTip: res.object,
-      });
+      };
     }
   };
 }
